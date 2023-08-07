@@ -8,7 +8,7 @@ x-traefik-label: &traefik-label
 services:
 
   blog:
-    image: ${param_registry_url}/library/blog:main
+    image: ${param_registry_repo}/library/blog:main
     pull_policy: always
     container_name: blog
     labels:
