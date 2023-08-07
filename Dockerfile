@@ -1,4 +1,4 @@
-FROM debian:bullseye as builder
+FROM ubuntu:jammy as builder
 WORKDIR /app
 
 COPY . .
