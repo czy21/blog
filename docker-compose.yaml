@@ -2,14 +2,14 @@ version: "3.9"
 
 x-traefik-label: &traefik-label
   traefik.enable: true
-  traefik.http.routers.${param_release_name}.service: ${param_release_name}
-  traefik.http.services.${param_release_name}.loadbalancer.server.port: 80
+  traefik.http.routers.blog.service: blog
+  traefik.http.services.blog.loadbalancer.server.port: 80
 
 services:
   app:
-    image: ${param_registry_repo}/library/${param_release_name}:${param_release_version}
+    image: ${param_registry_repo}/library/blog:${param_release_version}
     pull_policy: always
-    container_name: ${param_release_name}
+    container_name: blog
     labels:
       <<: *traefik-label
     expose:
