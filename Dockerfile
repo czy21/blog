@@ -3,7 +3,7 @@ WORKDIR /app
 
 COPY . .
 RUN ls -al
-RUN apt install hugo
+RUN apt-get update && apt install hugo
 RUN hugo --gc --minify
 RUN ls -al
 
