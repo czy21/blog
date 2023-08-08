@@ -1,0 +1,10 @@
+analytics:
+  google: G-26YBDNY933
+
+algoliaSearch:
+  enable: true
+  appId: WGLWUNVPAC
+  apiKey: c934d5fef7d441aa41dc944123fcc4d1
+  indexName: blog
+localSearch:
+  enable: false
