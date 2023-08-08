@@ -540,7 +540,7 @@ params:
   # Post edit
   # Easily browse and edit blog source code online.
   postEdit:
-    enable: true
+    enable: false
     url: https://github.com/user-name/repo-name/tree/branch-name/subdirectory-name/
 
 
@@ -620,7 +620,7 @@ params:
   bookmark:
     # 开启书签功能
     # If true, will display bookmark in all page.
-    enable: true
+    enable: false
     # 自定义书签显示颜色
     # Customize the color of the bookmark.
     color: "#222"
@@ -791,7 +791,7 @@ params:
   comments:
     # 开启评论组件
     # If true, will show comment component in post end.
-    enable: false   
+    enable: false
     # 设置默认使用的评论插件
     # 可选值：livere | waline | utterances | artalk | giscus
     # Choose a comment system to be displayed by default.
