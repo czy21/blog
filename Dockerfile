@@ -8,4 +8,5 @@ RUN wget -nv -O /tmp/hugo.deb https://github.com/gohugoio/hugo/releases/download
 RUN hugo --gc --minify
 
 FROM nginx:1.23.4-alpine
+RUN rm -rf /usr/share/nginx/html/index.html
 COPY --from=builder /app/public/ /usr/share/nginx/html/
