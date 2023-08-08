@@ -141,7 +141,7 @@ menus:
       weight: 3
     - identifier: doc
       name: 文档
-      url: /doc
+      url: https://doc.czy21.com
       pre: book
       weight: 4
     # - identifier: commonweal
