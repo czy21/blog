@@ -1,16 +1,17 @@
 ---
-title: "[openwrt] wireguard"
-description: "openwrt-wireguard"
-keywords: "openwrt,wireguard"
+title: "[devops] jenkins-ssh-agent"
+description: "devops-jenkins-ssh-agent"
+keywords: "devops,jenkins,ssh,agent"
 
-date: 2023-08-07T12:31:13+08:00
-lastmod: 2023-08-07T12:31:13+08:00
+date: 2023-08-08T11:32:11+08:00
+lastmod: 2023-08-08T11:32:11+08:00
 
 categories:
-  -
+  - devops
 tags:
-  -
-  -
+  - jenkins
+  - jenkins-ssh-agent
+  - ci/cd
 
 # 原文作者
 # Post's origin author name
@@ -36,7 +37,7 @@ tags:
 #toc: false
 # 绝对访问路径
 # Absolute link for visit
-#url: "openwrt-wireguard.html"
+#url: "devops-jenkins-ssh-agent.html"
 # 开启文章置顶，数字越小越靠前
 # Sticky post set-top in home page and the smaller nubmer will more forward.
 #weight: 1
@@ -48,6 +49,6 @@ tags:
 #mermaid: true
 ---
 
-openwrt-wireguard
+devops-jenkins-ssh-agent
 
 <!--more-->

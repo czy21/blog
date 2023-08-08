@@ -1,5 +1,5 @@
 ---
-title: "openwrt-ddns"
+title: "[openwrt] ddns"
 description: "openwrt-ddns"
 keywords: "openwrt,ddns"
 

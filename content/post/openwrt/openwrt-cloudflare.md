@@ -1,5 +1,5 @@
 ---
-title: "openwrt-cloudflare"
+title: "[openwrt] cloudflare"
 description: "openwrt-cloudflare"
 keywords: "openwrt,cloudflare"
 

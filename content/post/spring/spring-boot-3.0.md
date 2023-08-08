@@ -1,16 +1,15 @@
 ---
-title: "[openwrt] wireguard"
-description: "openwrt-wireguard"
-keywords: "openwrt,wireguard"
+title: "spring-boot-3.0"
+description: "spring-boot-3.0"
+keywords: "spring-boot,3.0"
 
-date: 2023-08-07T12:31:13+08:00
-lastmod: 2023-08-07T12:31:13+08:00
+date: 2023-08-08T11:19:32+08:00
+lastmod: 2023-08-08T11:19:32+08:00
 
 categories:
-  -
+  - spring
 tags:
-  -
-  -
+  - spring-boot
 
 # 原文作者
 # Post's origin author name
@@ -36,7 +35,7 @@ tags:
 #toc: false
 # 绝对访问路径
 # Absolute link for visit
-#url: "openwrt-wireguard.html"
+#url: "springboot3.html"
 # 开启文章置顶，数字越小越靠前
 # Sticky post set-top in home page and the smaller nubmer will more forward.
 #weight: 1
@@ -48,6 +47,6 @@ tags:
 #mermaid: true
 ---
 
-openwrt-wireguard
+springboot3
 
 <!--more-->

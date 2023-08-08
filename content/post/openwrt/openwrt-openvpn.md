@@ -1,5 +1,5 @@
 ---
-title: "openwrt-openvpn"
+title: "[openwrt] openvpn"
 description: "openwrt-openvpn"
 keywords: "openwrt,openvpn"
 
