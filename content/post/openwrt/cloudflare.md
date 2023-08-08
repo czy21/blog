@@ -1,10 +1,10 @@
 ---
-title: "[openwrt] cloudflare"
+title: "[openwrt] cloudflare(内网穿透)"
 description: "openwrt-cloudflare"
 keywords: "openwrt,cloudflare"
 
-date: 2023-08-07T12:30:58+08:00
-lastmod: 2023-08-07T12:30:58+08:00
+date: 2023-08-08T21:55:29+08:00
+lastmod: 2023-08-08T21:55:29+08:00
 
 categories:
   - openwrt
@@ -36,7 +36,7 @@ tags:
 #toc: false
 # 绝对访问路径
 # Absolute link for visit
-#url: "openwrt-cloudflare.html"
+#url: "cloudflare.html"
 # 开启文章置顶，数字越小越靠前
 # Sticky post set-top in home page and the smaller nubmer will more forward.
 #weight: 1
@@ -48,6 +48,6 @@ tags:
 #mermaid: true
 ---
 
-openwrt-cloudflare
+cloudflare
 
 <!--more-->
