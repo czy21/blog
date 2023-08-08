@@ -1,15 +1,15 @@
 ---
-title: "[openwrt] openvpn"
-description: "openwrt-openvpn"
-keywords: "openwrt,openvpn"
+title: "[mq] rabbit"
+description: "rabbit"
+keywords: "rabbit"
 
-date: 2023-08-07T12:31:17+08:00
-lastmod: 2023-08-07T12:31:17+08:00
+date: 2023-08-08T14:08:20+08:00
+lastmod: 2023-08-08T14:08:20+08:00
 
 categories:
-  -
+  - mq
 tags:
-  -
+  - rabbit
   -
 
 # 原文作者
@@ -36,7 +36,7 @@ tags:
 #toc: false
 # 绝对访问路径
 # Absolute link for visit
-#url: "openwrt-openvpn.html"
+#url: "rabbitmq.html"
 # 开启文章置顶，数字越小越靠前
 # Sticky post set-top in home page and the smaller nubmer will more forward.
 #weight: 1
@@ -48,6 +48,6 @@ tags:
 #mermaid: true
 ---
 
-openwrt-openvpn
+rabbitmq
 
 <!--more-->
