@@ -12,7 +12,7 @@
 
 # 站点域名，比如： https://hugo-next.eu.org
 # Website domain, eg: https://hugo-next.eu.org
-baseURL: /
+baseURL: http://example.org/
 # 站点标题
 # Website title
 title: czy21
@@ -94,7 +94,7 @@ outputFormats:
 # By default use local search, before switch to Algolia engine
 # Please replace LocalIndexes with AlgoliaIndexes
 outputs:
-  home: ["HTML", "RSS", "AlgoliaIndexes"]
+  home: ["HTML", "RSS", "LocalIndexes"]
 
 # 输出 robots 文件支持爬虫扫描
 # Enable robots with support crawler scan
