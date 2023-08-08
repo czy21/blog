@@ -1,5 +1,5 @@
 ---
-title: "[openwrt] ddns"
+title: "[openwrt] ddns(动态域名解析)"
 description: "openwrt-ddns"
 keywords: "openwrt,ddns"
 
@@ -9,7 +9,7 @@ lastmod: 2023-08-07T12:31:09+08:00
 categories:
   - openwrt
 tags:
-  -
+  - ddns
   -
 
 # 原文作者

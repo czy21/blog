@@ -1,5 +1,5 @@
 ---
-title: "[openwrt] wireguard"
+title: "[openwrt] wireguard异地组网"
 description: "openwrt-wireguard"
 keywords: "openwrt,wireguard"
 
@@ -7,9 +7,9 @@ date: 2023-08-07T12:31:13+08:00
 lastmod: 2023-08-07T12:31:13+08:00
 
 categories:
-  -
+  - openwrt
 tags:
-  -
+  - wireguard
   -
 
 # 原文作者
