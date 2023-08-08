@@ -1,6 +1,7 @@
 FROM registry.czy21-internal.com/library/hugo as builder
 
 COPY . .
+RUN env
 RUN hugo --gc --minify
 
 FROM nginx:1.23.4-alpine
