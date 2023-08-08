@@ -6,7 +6,7 @@ COPY . .
 RUN apt update -y && apt install wget -y
 RUN wget -nv -O /tmp/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb && dpkg -i /tmp/hugo.deb
 RUN hugo --gc --minify
+RUN ls -al public
 
 FROM nginx:1.23.4-alpine
-RUN rm -rf /usr/share/nginx/html/index.html
 COPY --from=builder /app/public/ /usr/share/nginx/html/
