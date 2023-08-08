@@ -139,6 +139,11 @@ menus:
       pageref: /archives
       pre: archive
       weight: 3
+    - identifier: doc
+      name: 文档
+      url: /doc
+      pre: book
+      weight: 4
     # - identifier: commonweal
     #   name: 公益 404
     #   url: /404.html
@@ -310,7 +315,6 @@ params:
   # Value before `||` delimiter is the target permalink, value after `||` delimiter is the name of Font Awesome icon.
   socials: 
     social0: Github || https://github.com/czy21 || fab fa-github
-    social1: Doc || https://doc.czy21.com || fa fa-file
     # social1: E-Mail || mailto:yourname@gmail.com || fa fa-envelope
     # social2: 知乎 || https://www.zhihu.com/people/lisenhui || fa fa-book
     #Google: https://plus.google.com/yourname || fab fa-google
