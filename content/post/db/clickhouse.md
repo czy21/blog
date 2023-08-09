@@ -1,5 +1,5 @@
 ---
-title: "[db] clickhouse"
+title: "DB clickhouse"
 description: "clickhouse"
 keywords: "clickhouse"
 

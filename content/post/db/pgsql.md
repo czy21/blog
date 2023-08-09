@@ -1,5 +1,5 @@
 ---
-title: "[db] pgsql"
+title: "DB pgsql"
 description: "pgsql"
 keywords: "pgsql"
 

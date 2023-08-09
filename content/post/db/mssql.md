@@ -1,5 +1,5 @@
 ---
-title: "[db] mssql"
+title: "DB mssql"
 description: "mssql"
 keywords: "mssql"
 

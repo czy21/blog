@@ -1,5 +1,5 @@
 ---
-title: "[db] mysql"
+title: "DB mysql"
 description: "mysql"
 keywords: "mysql"
 
