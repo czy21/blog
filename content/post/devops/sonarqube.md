@@ -1,5 +1,5 @@
 ---
-title: "[devops] sonarqube(代码质量审查)"
+title: "DevOps Sonarqube 代码质量审查"
 description: "devops-sonarqube"
 keywords: "devops,sonarqube"
 

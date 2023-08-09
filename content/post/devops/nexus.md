@@ -1,5 +1,5 @@
 ---
-title: "[devops] nexus"
+title: "DevOps Nexus 私服 代理第三方仓库"
 description: "devops-nexus"
 keywords: "devops,nexus"
 

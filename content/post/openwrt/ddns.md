@@ -1,5 +1,5 @@
 ---
-title: "[openwrt] ddns(动态域名解析)"
+title: "OpenWRT DDNS 动态域名解析 "
 description: "openwrt-ddns"
 keywords: "openwrt,ddns"
 

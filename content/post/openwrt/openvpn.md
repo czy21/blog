@@ -1,5 +1,5 @@
 ---
-title: "[openwrt] openvpn异地组网"
+title: "OpenWRT OpenVPN 异地组网"
 description: "openwrt-openvpn"
 keywords: "openwrt,openvpn"
 

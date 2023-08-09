@@ -1,5 +1,5 @@
 ---
-title: "[mq] rabbit"
+title: "MQ Rabbit 部署及使用"
 description: "rabbit"
 keywords: "rabbit"
 

@@ -1,5 +1,5 @@
 ---
-title: "spring-boot-3.0"
+title: "Gradle构建SpringBoot3.0"
 description: "spring-boot-3.0"
 keywords: "spring-boot,3.0"
 
@@ -10,6 +10,7 @@ categories:
   - spring
 tags:
   - spring-boot
+  - gradle
 
 # 原文作者
 # Post's origin author name

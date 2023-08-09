@@ -1,5 +1,5 @@
 ---
-title: "[devops] gitea"
+title: "DevOps 使用Gitea搭建私有Git仓库"
 description: "devops-gitea"
 keywords: "devops,gitea"
 

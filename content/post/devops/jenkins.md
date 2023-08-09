@@ -1,5 +1,5 @@
 ---
-title: "[devops] jenkins"
+title: "DevOps Jenkins 分布式构建"
 description: "devops-jenkins"
 keywords: "devops,jenkins"
 

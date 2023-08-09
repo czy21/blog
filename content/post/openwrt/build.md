@@ -1,5 +1,5 @@
 ---
-title: "[openwrt] build(官方系统构建)"
+title: "OpenWRT 官方系统构建"
 description: "build"
 keywords: "build"
 

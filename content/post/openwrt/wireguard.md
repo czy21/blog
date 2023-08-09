@@ -1,5 +1,5 @@
 ---
-title: "[openwrt] wireguard异地组网"
+title: "OpenWRT WireGuard 异地组网"
 description: "openwrt-wireguard"
 keywords: "openwrt,wireguard"
 

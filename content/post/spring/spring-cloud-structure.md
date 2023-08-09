@@ -1,5 +1,5 @@
 ---
-title: "spring-cloud-structure(微服务工程结构)"
+title: "SpringCloud 微服务工程结构"
 description: "spring-cloud-structure"
 keywords: "spring-cloud,structure"
 

@@ -1,5 +1,5 @@
 ---
-title: "[openwrt] cloudflare(内网穿透)"
+title: "OpenWRT Cloudflare 内网穿透"
 description: "openwrt-cloudflare"
 keywords: "openwrt,cloudflare"
 

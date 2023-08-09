@@ -1,5 +1,5 @@
 ---
-title: "[mq] pulsar"
+title: "MQ Pulsar 部署及使用"
 description: "pulsar"
 keywords: "pulsar"
 
