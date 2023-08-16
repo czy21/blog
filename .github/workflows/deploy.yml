@@ -53,7 +53,7 @@ jobs:
         env:
           HUGO_ENVIRONMENT: prod
           HUGO_ENV: prod
-        run: hugo --minify --baseURL
+        run: hugo --gc --minify
       - name: Upload algolia
         env:
           ALGOLIA_ADMIN_KEY: ${{ vars.ALGOLIA_ADMIN_KEY }}
