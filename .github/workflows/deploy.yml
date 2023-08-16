@@ -55,6 +55,8 @@ jobs:
           HUGO_ENVIRONMENT: prod
         run: hugo --gc --minify
       - name: Upload algolia
+        env:
+          ALGOLIA_ADMIN_KEY: ${{ vars.ALGOLIA_ADMIN_KEY }}
         run: npm install && npm run algolia
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
