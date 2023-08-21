@@ -4,7 +4,7 @@ description: "build"
 keywords: "build"
 
 date: 2023-08-08T14:36:15+08:00
-lastmod: 2023-08-08T15:35:35+08:00
+lastmod: 2023-08-21T09:26:35+08:00
 
 categories:
   - openwrt
@@ -30,7 +30,6 @@ cd openwrt
 git checkout v22.03.5
 echo "
 src-git helloworld https://github.com/fw876/helloworld
-src-git openclash https://github.com/vernesong/OpenClash
 src-git plugin https://github.com/czy21/openwrt-plugin.git
 " >> feeds.conf.default
 ./scripts/feeds update -a && ./scripts/feeds install -a
