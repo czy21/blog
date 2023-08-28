@@ -33,6 +33,7 @@ src-git helloworld https://github.com/fw876/helloworld
 src-git plugin https://github.com/czy21/openwrt-plugin.git
 " >> feeds.conf.default
 ./scripts/feeds update -a && ./scripts/feeds install -a
+cp -r feeds/plugin/package/dnsproxy/files/ feeds/packages/net/dnsproxy/
 make menuconfig
 nohup make -j1 V=s & # 首次构建推荐使用单线程
 tail -f nohup.out
@@ -41,6 +42,7 @@ tail -f nohup.out
 ```shell
 git pull
 ./scripts/feeds update -a && ./scripts/feeds install -a
+cp -r feeds/plugin/package/dnsproxy/files/ feeds/packages/net/dnsproxy/
 make menuconfig
 nohup make -j$(($(nproc) + 1)) V=s &
 tail -f nohup.out
