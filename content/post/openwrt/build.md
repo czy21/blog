@@ -28,6 +28,7 @@ sudo apt install -y build-essential clang flex g++ gawk gcc-multilib gettext git
 git clone https://git.openwrt.org/openwrt/openwrt.git
 cd openwrt
 git checkout v22.03.5
+sed -i -e 's|\^.*|;openwrt-22.03|' feeds.conf.default
 echo "
 src-git helloworld https://github.com/fw876/helloworld
 src-git plugin https://github.com/czy21/openwrt-plugin.git
