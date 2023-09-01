@@ -43,14 +43,14 @@ tail -f nohup.out
 git pull
 ./scripts/feeds update -a && ./scripts/feeds install -a && ./feeds/plugin/sync.sh
 make menuconfig
-nohup make -j$(($(nproc) + 1)) V=s &
+nohup make -j$(nproc) V=s &
 tail -f nohup.out
 ```
 ## 重新构建
 ```shell
 rm -rf .tmp .config
 make menuconfig
-nohup make -j$(($(nproc) + 1)) V=s &
+nohup make -j$(nproc) V=s &
 tail -f nohup.out
 ```
 ----
