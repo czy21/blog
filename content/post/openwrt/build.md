@@ -48,7 +48,7 @@ tail -f nohup.out
 ```
 ## 重新构建
 ```shell
-rm -rf .tmp .config
+rm -rf tmp .config
 make menuconfig
 nohup make -j$(nproc) V=s &
 tail -f nohup.out
