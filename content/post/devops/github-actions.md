@@ -17,16 +17,18 @@ tags:
 ## 设置仓库
 ![](runners-add.png)
 ## Settings -> Actions -> Runners -> New self-hosted runner
-  * 选择镜像 -> 目标架构
+  * Runner image: Linux
+  * Architecture: x64
 ## Register Runner
-![](runners-config.png)
 ```
 ./config.sh --name <name> --url <repo_url> --token <token>
 ## 后台运行并输出日志到run.log
 ./run.sh > run.log 2>&1 &
 ```
-## 创建github workflow; .github/workflows/ci.yaml
-注: runs-on: self-hosted
+![](runners-config.png)
+## 测试Github workflow
+  * 创建.github/workflows/ci.yaml
+  * 注: runs-on: self-hosted
 ```yaml
 name: ci on self-hosted runners
 
