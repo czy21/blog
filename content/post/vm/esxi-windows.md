@@ -19,5 +19,5 @@ REG ADD HKLM\SYSTEM\Setup\LabConfig /v BypassTPMCheck /t REG_DWORD /d 1
 REG ADD HKLM\SYSTEM\Setup\LabConfig /v BypassSecureBootCheck /t REG_DWORD /d 1
 # skip microsoft login
 # username: no@thanks.com
-# password: thanks
+# password: nothanks
 ```
