@@ -21,7 +21,9 @@ REG ADD HKLM\SYSTEM\Setup\LabConfig /v BypassSecureBootCheck /t REG_DWORD /d 1
 # username: no@thanks.com
 # password: nothanks
 ```
-## KMS激活; 密钥: https://github.com/Wind4/vlmcsd/tree/gh-pages
+## KMS激活
+https://github.com/Wind4/vlmcsd/tree/gh-pages
+https://learn.microsoft.com/zh-cn/windows-server/get-started/kms-client-activation-keys
 - Windows
   ```powershell
   slmgr /upk
