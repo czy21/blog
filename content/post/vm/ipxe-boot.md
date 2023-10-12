@@ -20,7 +20,7 @@ cd ipxe/src
 cat << EOF > script.ipxe
 #!ipxe
 dhcp
-chain --autofree tftp://${next-server}/boot.ipxe
+chain --autofree tftp://\${next-server}/boot.ipxe
 #chain --autofree https://boot.netboot.xyz
 EOF
 ```
