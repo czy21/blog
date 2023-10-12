@@ -21,3 +21,20 @@ REG ADD HKLM\SYSTEM\Setup\LabConfig /v BypassSecureBootCheck /t REG_DWORD /d 1
 # username: no@thanks.com
 # password: nothanks
 ```
+## KMS激活; 密钥: https://github.com/Wind4/vlmcsd/tree/gh-pages
+- Windows
+  ```powershell
+  slmgr /upk
+  slmgr /skms 192.168.1.1
+  slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX
+  slmgr /ato
+  ```
+- Office 2019
+  ```powershell
+  cd "C:\Program Files\Microsoft Office\Office16"
+  foreach ($x in Get-ChildItem ..\root\Licenses16\*_KMS*.xrm-ms -name) {cscript ospp.vbs /inslic:"..\root\Licenses16\$x"}
+  cscript ospp.vbs /sethst:192.168.1.1
+  cscript ospp.vbs /inpkey:NMMKJ-6RK4F-KMJVX-8D9MJ-6MWKP
+  cscript ospp.vbs /act
+  slmgr /ato SKUID
+  ```
