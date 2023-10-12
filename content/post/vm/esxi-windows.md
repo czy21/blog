@@ -22,8 +22,8 @@ REG ADD HKLM\SYSTEM\Setup\LabConfig /v BypassSecureBootCheck /t REG_DWORD /d 1
 # password: nothanks
 ```
 ## KMS激活
-https://github.com/Wind4/vlmcsd/tree/gh-pages
-https://learn.microsoft.com/zh-cn/windows-server/get-started/kms-client-activation-keys
+- https://github.com/Wind4/vlmcsd/tree/gh-pages
+- https://learn.microsoft.com/zh-cn/windows-server/get-started/kms-client-activation-keys
 - Windows
   ```powershell
   slmgr /upk
