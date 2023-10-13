@@ -1,5 +1,5 @@
 ---
-title: "PVE 硬件直通"
+title: "PVE 安装 硬件直通"
 description: pve
 keywords: "pve"
 
@@ -12,6 +12,21 @@ tags:
   - pve
 ---
 
+## Remove subscription
+  - vim proxmoxlib.js
+    ```shell
+    vim /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js
+    /checked_command
+    ```
+  - ```js
+    checked_command: function(orig_cmd) {
+		  orig_cmd();
+    },
+    ```
+  - ```shell
+    systemctl restart pveproxy.service
+    ```
+  - CTRL+F5 Refresh Brower
 ## Enable IOMMU 
 - INTEL
   ```shell
