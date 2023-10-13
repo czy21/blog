@@ -12,13 +12,21 @@ tags:
   - pve
 ---
 
-## Configuration
+## Enable IOMMU 
+- INTEL
+  ```shell
+  sed 's|\(GRUB_CMDLINE_LINUX_DEFAULT\)=\(.*\)|\1="quiet intel_iommu=on iommu=pt"|' /etc/default/grub
+  ```
+- AMD
+  ```shell
+  sed 's|\(GRUB_CMDLINE_LINUX_DEFAULT\)=\(.*\)|\1="quiet amd_iommu=on iommu=pt"|' /etc/default/grub
+  ```
+- GPU
+  ```shell
+  # GPU passthrough: GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on iommu=pt video=vesafb:off video=efifb:off video=simplefb:off"
+  ```
+## Kernel Modules
 ```shell
-# INTEL
-sed 's|\(GRUB_CMDLINE_LINUX_DEFAULT\)=\(.*\)|\1="quiet intel_iommu=on iommu=pt"|' /etc/default/grub
-# AMD
-sed 's|\(GRUB_CMDLINE_LINUX_DEFAULT\)=\(.*\)|\1="quiet amd_iommu=on iommu=pt"|' /etc/default/grub
-# GPU passthrough: GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on iommu=pt video=vesafb:off video=efifb:off video=simplefb:off"
 cat << EOF > /etc/modules
 # /etc/modules: kernel modules to load at boot time.
 #
@@ -32,40 +40,49 @@ vfio_pci
 vfio_virqfd
 EOF
 update-initramfs -u -k all
-# check is success
+```
+## Verify
+```shell
 dmesg | grep iommu
-# no print is fail
+# hav output is success
 find /sys/kernel/iommu_groups/ -type l
 ```
 
-## GPU Passthrough
+## GPU passthrough
+  - AMD
+    ```shell
+    cat << EOF > /etc/modprobe.d/blacklist.conf 
+    blacklist radeon
+    blacklist amdgpu
+    EOF
+    ```
+  - NVIDIA
+    ```shell
+    cat << EOF > /etc/modprobe.d/blacklist.conf 
+    blacklist nouveau
+    blacklist nvidia
+    blacklist nvidiafb
+    EOF
+    ```
+  - Intel and not use Gvt-G
+    ```shell
+    cat << EOF > /etc/modprobe.d/blacklist.conf 
+    blacklist snd_hda_intel
+    blacklist snd_hda_codec_hdmi
+    blacklist i915
+    EOF    
+    ```
+## Set passthrough ids
 ```shell
-# AMD
-cat << EOF > /etc/modprobe.d/blacklist.conf 
-blacklist radeon
-blacklist amdgpu
-EOF
-# NVIDIA
-cat << EOF > /etc/modprobe.d/blacklist.conf 
-blacklist nouveau
-blacklist nvidia
-blacklist nvidiafb
-EOF
-# INTEL core display when not use Gvt-G
-cat << EOF > /etc/modprobe.d/blacklist.conf 
-blacklist snd_hda_intel
-blacklist snd_hda_codec_hdmi
-blacklist i915
-EOF
 # show pcie device
 lspci -nn
 # set passthrough ids
 echo "options vfio-pci ids=xxxx:xxxx,yyyy:yyyy" > /etc/modprobe.d/vfio.conf
 # verify
 lspci -nnk
-# reboot
+reboot
 ```
-# Disk passthrough
+## Disk passthrough
   - RDM
   ```shell
   ls -la /dev/disk/by-id/|grep -v dm|grep -v lvm|grep -v part
