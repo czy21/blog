@@ -111,3 +111,6 @@ update-initramfs -u -k all && reboot
   ```
 ## Reference
   - https://pve.proxmox.com/wiki/PCI(e)_Passthrough
+  - https://foxi.buduanwang.vip/virtualization/pve/561.html
+  - https://foxi.buduanwang.vip/virtualization/1754.html
+  - https://foxi.buduanwang.vip/virtualization/375.html
