@@ -25,6 +25,9 @@ tags:
   ```shell
   # GPU passthrough: GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on iommu=pt video=vesafb:off video=efifb:off video=simplefb:off"
   ```
+```shell
+update-grub
+```
 ## Kernel Modules
 ```shell
 cat << EOF > /etc/modules
