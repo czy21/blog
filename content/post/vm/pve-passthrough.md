@@ -42,7 +42,7 @@ vfio_iommu_type1
 vfio_pci
 vfio_virqfd
 EOF
-update-initramfs -u -k all
+update-initramfs -u -k all && reboot
 ```
 ## Verify
 ```shell
@@ -50,7 +50,6 @@ dmesg | grep iommu
 # hav output is success
 find /sys/kernel/iommu_groups/ -type l
 ```
-
 ## GPU passthrough
   - AMD
     ```shell
@@ -83,7 +82,7 @@ lspci -nn
 echo "options vfio-pci ids=xxxx:xxxx,yyyy:yyyy" > /etc/modprobe.d/vfio.conf
 # verify
 lspci -nnk
-reboot
+update-initramfs -u -k all && reboot
 ```
 ## Disk passthrough
   - RDM
