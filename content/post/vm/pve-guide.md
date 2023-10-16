@@ -28,17 +28,13 @@ tags:
     ```
   - CTRL+F5 Refresh Brower
 ## Enable IOMMU 
-- INTEL
-  ```shell
-  sed 's|\(GRUB_CMDLINE_LINUX_DEFAULT\)=\(.*\)|\1="quiet intel_iommu=on iommu=pt"|' /etc/default/grub
-  ```
 - AMD
   ```shell
   sed 's|\(GRUB_CMDLINE_LINUX_DEFAULT\)=\(.*\)|\1="quiet amd_iommu=on iommu=pt"|' /etc/default/grub
   ```
-- GPU
+- INTEL
   ```shell
-  # GPU passthrough: GRUB_CMDLINE_LINUX_DEFAULT="quiet intel_iommu=on iommu=pt video=vesafb:off video=efifb:off video=simplefb:off"
+  sed 's|\(GRUB_CMDLINE_LINUX_DEFAULT\)=\(.*\)|\1="quiet intel_iommu=on iommu=pt"|' /etc/default/grub
   ```
 ```shell
 update-grub
@@ -57,7 +53,8 @@ vfio_iommu_type1
 vfio_pci
 vfio_virqfd
 EOF
-update-initramfs -u -k all && reboot
+update-initramfs -u -k all 
+reboot
 ```
 ## Verify
 ```shell
@@ -75,20 +72,19 @@ find /sys/kernel/iommu_groups/ -type l
     ```
   - NVIDIA
     ```shell
-    cat << EOF > /etc/modprobe.d/blacklist.conf 
+    cat << EOF > /etc/modprobe.d/blacklist.conf
     blacklist nouveau
-    blacklist nvidia
-    blacklist nvidiafb
+    blacklist nvidia*
     EOF
     ```
-  - Intel and not use Gvt-G
-    ```shell
-    cat << EOF > /etc/modprobe.d/blacklist.conf 
-    blacklist snd_hda_intel
-    blacklist snd_hda_codec_hdmi
-    blacklist i915
-    EOF    
-    ```
+## Allow unsafe interrupt
+```shell
+echo "options vfio_iommu_type1 allow_unsafe_interrupts=1" > /etc/modprobe.d/iommu_unsafe_interrupts.conf
+```
+## Ignore vm exception
+```shell
+echo "options kvm ignore_msrs=1 report_ignored_msrs=0" > /etc/modprobe.d/kvm.conf
+```
 ## Set passthrough ids
 ```shell
 # show pcie device
@@ -97,7 +93,8 @@ lspci -nn
 echo "options vfio-pci ids=xxxx:xxxx,yyyy:yyyy" > /etc/modprobe.d/vfio.conf
 # verify
 lspci -nnk
-update-initramfs -u -k all && reboot
+update-initramfs -u -k all
+reboot
 ```
 ## Disk passthrough
   - RDM
@@ -110,6 +107,7 @@ update-initramfs -u -k all && reboot
   qm set <vmid> --delete scsi0
   ```
 ## Reference
+  - https://pve.proxmox.com/wiki/PCI_Passthrough
   - https://pve.proxmox.com/wiki/PCI(e)_Passthrough
   - https://foxi.buduanwang.vip/virtualization/pve/561.html
   - https://foxi.buduanwang.vip/virtualization/1754.html
