@@ -104,7 +104,8 @@ mkfs.ext4 /dev/sdb1              格式化系统
     ```
 # 系统
 ```bash
-systemctl restart sshd.service # 重启sshd
+# set hostname
+hostnamectl set-hostname --static [hostname]
 ```
 # ssh
 ```bash
@@ -113,6 +114,17 @@ scp -r [local] [user]@[host]:[remote]                      # 本地上传文件�
 ssh [user]@[host] 'bash -s' < test.sh init                 # ssh运行加参数的本地脚本
 ssh [user]@[host] < test.sh                                # ssh直接运行.sh脚本
 ssh [user]@[host] 'mkdir -p .ssh && cat >> .ssh/authorized_keys' < ~/.ssh/id_rsa.pub # 将本地公钥id_rsa.pub传给远程主机
+```
+# rsync
+```shell
+# list remote module
+rsync rsync://<host>
+# use ssh arg
+-e "ssh -i <private_key_file>"
+# push
+rsync --archive --progress --verbose --xattrs -H <local_path> rsync://<user>@<host>:<remote_path>
+# pull
+rsync --archive --progress --verbose --xattrs -H rsync://<user>@<host>:<remote_path> <local_path>
 ```
 # docker
 ```bash
