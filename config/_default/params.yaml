@@ -307,12 +307,12 @@ footer:
 # 将文章的描述内容用于首页展示（暂时未实现）
 # Automatically excerpt description in homepage 
 # as preamble text (not implemented by now).
-excerptDesc: true
+excerptDesc: false
 
 # 是否显示阅读更多按钮
 # Read more button
 # If true, the read more button will be displayed in excerpt section.
-readMoreBtn: true
+readMoreBtn: false
 
 # 开启文章头部元素显示
 # Post meta display settings
