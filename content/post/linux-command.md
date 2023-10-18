@@ -4,7 +4,7 @@ description: command
 keywords: "linux"
 
 date: 2023-10-17T10:20:58+08:00
-lastmod: 2023-10-17T10:20:58+08:00
+lastmod: 2023-10-18T10:20:58+08:00
 
 categories:
   - linux
