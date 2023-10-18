@@ -119,12 +119,11 @@ ssh [user]@[host] 'mkdir -p .ssh && cat >> .ssh/authorized_keys' < ~/.ssh/id_rsa
 ```shell
 # list remote module
 rsync rsync://<host>
-# use ssh arg
--e "ssh -i <private_key_file>"
+# -e "ssh -i <private_key_file>"
 # push
-rsync --archive --progress --verbose --xattrs -H <local_path> rsync://<user>@<host>:<remote_path>
+rsync --progress -avogXH <local_path> rsync://<user>@<host>:<remote_path>
 # pull
-rsync --archive --progress --verbose --xattrs -H rsync://<user>@<host>:<remote_path> <local_path>
+rsync --progress -avogXH rsync://<user>@<host>:<remote_path> <local_path>
 ```
 # docker
 ```bash
