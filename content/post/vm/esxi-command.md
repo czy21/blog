@@ -14,5 +14,6 @@ tags:
 
 # 
 ```shell
-
+vim-cmd vmsvc/getallvms
+vim-cmd vmsvc/power.shutdown [vmid]
 ```
