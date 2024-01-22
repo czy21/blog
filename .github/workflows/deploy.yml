@@ -65,7 +65,9 @@ jobs:
 
   # Deployment job
   deploy:
+    environment:
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - run: ls -al
+      - run: ls -al;wget ${url};ls -al
