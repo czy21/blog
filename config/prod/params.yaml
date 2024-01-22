@@ -9,7 +9,7 @@ algoliaSearch:
 
 footer:
   beian:
-    enable: false
+    enable: true
     icp: 黑ICP备2024017409号-1
     provinceAbbr: 黑
     gonganNum: 0
