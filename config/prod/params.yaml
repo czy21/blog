@@ -6,3 +6,8 @@ algoliaSearch:
   appId: WGLWUNVPAC
   apiKey: c934d5fef7d441aa41dc944123fcc4d1
   indexName: blog
+
+footer:
+  beian:
+    enable: true
+    icp: 黑ICP备2024017409号-1
