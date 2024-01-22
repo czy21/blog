@@ -62,4 +62,5 @@ jobs:
         uses: actions/upload-pages-artifact@v2
         with:
           path: ./public
-      - run: ls -al
+      - run: |
+          scp -i ${{ secrets.ALI_PRIVATE_KEY }} /home/runner/work/_temp/artifact.tar opsor@czy21.com:
