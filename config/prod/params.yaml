@@ -9,5 +9,5 @@ algoliaSearch:
 
 footer:
   beian:
-    enable: true
+    enable: false
     icp: 黑ICP备2024017409号-1
