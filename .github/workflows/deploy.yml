@@ -66,4 +66,4 @@ jobs:
           SSH_KEY: ${{ secrets.ALI_PRIVATE_KEY }}
         run:
           echo ${SSH_KEY}
-          #scp -i ${{ secrets.ALI_PRIVATE_KEY }} /home/runner/work/_temp/artifact.tar opsor@czy21.com:
+          scp -i ${SSH_KEY} /home/runner/work/_temp/artifact.tar opsor@czy21.com:
