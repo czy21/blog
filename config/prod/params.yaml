@@ -1,5 +1,5 @@
-analytics:
-  google: G-26YBDNY933
+# analytics:
+#   google: G-26YBDNY933
 
 algoliaSearch:
   enable: true
@@ -11,3 +11,5 @@ footer:
   beian:
     enable: false
     icp: 黑ICP备2024017409号-1
+    provinceAbbr: 黑
+    gonganNum: 0

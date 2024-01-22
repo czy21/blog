@@ -789,7 +789,7 @@ analytics:
   #baidu: #<anaytics_id>
   # 谷歌统计
   # Google Analytics
-  google: G-26YBDNY933
+  # google: #<anaytics_id>
   # 不蒜子统计
   # Show Views / Visitors of the website / page with busuanzi.
   # For more information: http://ibruce.info/2015/04/04/busuanzi/
