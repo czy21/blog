@@ -64,6 +64,6 @@ jobs:
           path: ./public
       - env:
           SSH_KEY: ${{ secrets.ALI_PRIVATE_KEY }}
-        run:
+        run: |
           echo ${SSH_KEY}
           scp -i ${SSH_KEY} /home/runner/work/_temp/artifact.tar opsor@czy21.com:
