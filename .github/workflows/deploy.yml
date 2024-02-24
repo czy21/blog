@@ -58,10 +58,15 @@ jobs:
         env:
           ALGOLIA_ADMIN_KEY: ${{ vars.ALGOLIA_ADMIN_KEY }}
         run: npm run algolia
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
-        with:
-          path: ./public
+      - name: Artifact
+        run: |
+          tar \
+          --dereference --hard-dereference \
+          --directory ./public \
+          -cvf "artifact.tar" \
+          --exclude=.git \
+          --exclude=.github \
+          .
       - name: Deploy by ssh
         run: |
           mkdir -p /home/runner/.ssh/;chmod 700 /home/runner/.ssh/;
@@ -69,6 +74,5 @@ jobs:
           chmod 600 /home/runner/.ssh/bruce-rsa
           SSH_OPT="-o StrictHostKeyChecking=no -i /home/runner/.ssh/bruce-rsa"
           BLOG_DIR=/usr/share/nginx/blog/
-          scp ${SSH_OPT} /home/runner/work/_temp/artifact.tar opsor@${{ secrets.ALI_HOST }}:
+          scp ${SSH_OPT} artifact.tar opsor@${{ secrets.ALI_HOST }}:
           ssh ${SSH_OPT} opsor@${{ secrets.ALI_HOST }} "sudo mkdir -p $BLOG_DIR && sudo tar -xvf artifact.tar -C $BLOG_DIR && rm -rf artifact.tar"
-          
