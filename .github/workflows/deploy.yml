@@ -59,22 +59,22 @@ jobs:
           ALGOLIA_ADMIN_KEY: ${{ vars.ALGOLIA_ADMIN_KEY }}
         run: npm run algolia
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           path: ./public
-  deploy-pages:
-    needs: build
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v3
+  # deploy-pages:
+  #   needs: build
+  #   environment:
+  #     name: github-pages
+  #     url: ${{ steps.deployment.outputs.page_url }}
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Deploy to GitHub Pages
+  #       id: deployment
+  #       uses: actions/deploy-pages@v3
   deploy-web:
-    needs: [build,"deploy-pages"]
+    needs: ["deploy-pages"]
     uses: czy21/action/.github/workflows/deploy-web.yml@main
     with:
       web_name: blog
-      artifact_name: github-pages
+      artifact_name: artifact
