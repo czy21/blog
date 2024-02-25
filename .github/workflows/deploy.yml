@@ -62,19 +62,10 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
-  deploy-pages:
+  deploy:
     needs: build
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
-  deploy-web:
-    needs: ["build"]
     uses: czy21/action/.github/workflows/deploy-web.yml@main
     with:
       web_name: blog
       artifact_name: github-pages
+    secrets: inherit
