@@ -62,7 +62,7 @@ jobs:
         uses: actions/upload-pages-artifact@v2
         with:
           path: ./public
-  deploy:
+  deploy-pages:
     needs: build
     environment:
       name: github-pages
@@ -73,7 +73,7 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v3
   deploy-web:
-    needs: build
+    needs: [build,"deploy-pages"]
     uses: czy21/action/.github/workflows/deploy-web.yml@main
     with:
       web_name: blog
