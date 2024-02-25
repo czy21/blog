@@ -1,5 +1,5 @@
 # Sample workflow for building and deploying a Hugo site to GitHub Pages
-name: Deploy Blog to Pages
+name: Deploy
 
 on:
   # Runs on pushes targeting the default branch
@@ -59,6 +59,6 @@ jobs:
           ALGOLIA_ADMIN_KEY: ${{ vars.ALGOLIA_ADMIN_KEY }}
         run: npm run algolia
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-pages-artifact@v2
         with:
           path: ./public
