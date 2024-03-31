@@ -12,6 +12,9 @@ tags:
   - wireguard
 ---
 
+## 依赖
+- luci-proto-wireguard 
+- qrencode
 ## 新建接口: 网络 -> 接口 -> 添加新接口
 ![](add_interface.png)
 ## 常规设置
