@@ -4,50 +4,24 @@ description: "openwrt-wireguard"
 keywords: "openwrt,wireguard"
 
 date: 2023-08-07T12:31:13+08:00
-lastmod: 2023-08-07T12:31:13+08:00
+lastmod: 2024-17-37T12:31:13+08:00
 
 categories:
   - openwrt
 tags:
   - wireguard
-  -
-
-# 原文作者
-# Post's origin author name
-#author:
-# 原文链接
-# Post's origin link URL
-#link:
-# 图片链接，用在open graph和twitter卡片上
-# Image source link that will use in open graph and twitter card
-#imgs:
-# 在首页展开内容
-# Expand content on the home page
-#expand: true
-# 外部链接地址，访问时直接跳转
-# It's means that will redirecting to external links
-#extlink:
-# 在当前页面关闭评论功能
-# Disabled comment plugins in this post
-#comment:
-#  enable: false
-# 关闭文章目录功能
-# Disable table of content
-#toc: false
-# 绝对访问路径
-# Absolute link for visit
-#url: "openwrt-wireguard.html"
-# 开启文章置顶，数字越小越靠前
-# Sticky post set-top in home page and the smaller nubmer will more forward.
-#weight: 1
-# 开启数学公式渲染，可选值： mathjax, katex
-# Support Math Formulas render, options: mathjax, katex
-#math: mathjax
-# 开启各种图渲染，如流程图、时序图、类图等
-# Enable chart render, such as: flow, sequence, classes etc
-#mermaid: true
 ---
 
-openwrt-wireguard
+## 新建接口: 网络 -> 接口 -> 添加新接口
+![](add_interface.png)
+## 常规设置
+![](setting.png)
+## 防火墙设为lan
+## 对端 -> 添加对端
+![](add_node.png)
+## 生成对端配置
+![](generate_node.png)
 
-<!--more-->
+## 注
+- xxx.com为本端域名或公网ip地址
+- 添加对端时允许的ip不能填本路由所属的ip段,否则会导致无法访问本路由
