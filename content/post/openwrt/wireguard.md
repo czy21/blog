@@ -3,7 +3,7 @@ title: "OpenWRT WireGuard 异地组网"
 description: "openwrt-wireguard"
 keywords: "openwrt,wireguard"
 
-date: 2023-08-07T12:31:13+08:00
+date: 2024-03-31T12:31:13+08:00
 lastmod: 2024-03-31T12:31:13+08:00
 
 categories:
