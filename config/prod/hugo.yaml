@@ -1,4 +1,4 @@
-baseURL: https://czy21.com/
+baseURL: https://www.czy21.com/
 
 outputs:
   home: ["HTML", "RSS", "AlgoliaIndexes"]
