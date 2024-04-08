@@ -8,6 +8,9 @@ algoliaSearch:
   apiKey: c934d5fef7d441aa41dc944123fcc4d1
   indexName: blog
 
+gitter:
+  enable: false
+
 footer:
   beian:
     enable: true
