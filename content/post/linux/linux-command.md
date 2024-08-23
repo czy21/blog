@@ -144,7 +144,7 @@ docker rm $(docker ps -qa --no-trunc --filter "status=exited")       # 清空exi
 docker image prune -a                                                # 清空未使用的镜像
 docker ps -a --filter volume=                                        # 根据volume name获取container
 docker inspect <container_name> -f '{{ .LogPath }}' | xargs sudo cat # 查看容器日志文件
-docker inspect <container_name> -f '{{ .LogPath }}' | xargs sudo tee # 删除容器日志文件内容
+docker inspect <container_name> -f '{{ .LogPath }}' | xargs sudo tee # 清空容器日志文件
 ```
 # mac
 ```bash
