@@ -35,7 +35,7 @@ tags:
   ```
 ## VLAN
 - 启用Windows功能
-![](runners-add.png)
+![](vlan-feature.png)
 ```powershell
 # 获取网卡信息
 Get-NetAdapter
