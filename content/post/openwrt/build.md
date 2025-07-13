@@ -33,7 +33,7 @@ echo "
 src-git helloworld https://github.com/fw876/helloworld
 src-git plugin https://github.com/czy21/openwrt-plugin.git
 " >> feeds.conf.default
-./scripts/feeds update -a && ./scripts/feeds install -a && ./feeds/plugin/sync.sh
+./scripts/feeds update -a && ./scripts/feeds install
 make menuconfig
 nohup make -j1 V=s & # 首次构建推荐使用单线程
 tail -f nohup.out
@@ -41,7 +41,7 @@ tail -f nohup.out
 ## 二次构建
 ```shell
 git pull
-./scripts/feeds update -a && ./scripts/feeds install -a && ./feeds/plugin/sync.sh
+./scripts/feeds update -a && ./scripts/feeds install
 make menuconfig
 nohup make -j$(nproc) V=s &
 tail -f nohup.out
@@ -81,5 +81,9 @@ Kernel modules > USB Support:
   * luci-app-radicale2      # 日历 联系人同步
   * luci-app-ksmbd          # smb server
   * luci-app-nfs            # nfs server
+## Image Builder
+```text
+docker run --detach -it --name openwrt-ib-x86-64-<tag>-dev -v openwrt-ib-x86-64-<tag>-dev:/builder openwrt/imagebuilder:x86-64-<tag>
+```
 ## 常见问题
  * cron.err xxxxxx 意为cron执行过任务,不是任务内部出错
