@@ -21,7 +21,7 @@ tags:
 export GH_TOKEN=
 github_user=
 github_repo=
-run_ids=$(gh api -X GET -F per_page=100 /repos/${github_user}/${github_repo}/actions/runs --jq '.workflow_runs[] | select(.status=="completed") | .id' | xargs)
+ids=$(gh api -X GET -F per_page=100 /repos/${github_user}/${github_repo}/actions/runs --jq '.workflow_runs[] | select(.status=="completed") | .id' | xargs)
 for t in $ids;do
   echo "Delete: $t"
   gh api -X DELETE /repos/${github_user}/${github_repo}/actions/runs/$t --silent
