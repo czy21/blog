@@ -145,7 +145,10 @@ docker image prune -a                                                # 清空未
 docker ps -a --filter volume=                                        # 根据volume name获取container
 docker inspect <container_name> -f '{{ .LogPath }}' | xargs sudo cat # 查看容器日志文件
 docker inspect <container_name> -f '{{ .LogPath }}' | xargs sudo tee # 清空容器日志文件
-docker volume create --driver local --opt type=nfs --opt device=:<export_path> --opt o=addr=<nfs_server>,rw <volume_name> # 创建nfs volume;容器挂载时生效
+# 创建nfs volume;容器挂载时生效
+docker volume create --driver local --opt type=nfs --opt device=:<export_path> --opt o=addr=<nfs_server>,rw <volume_name> 
+# 创建smb volume;容器挂载时生效
+docker volume create --driver local --opt type=cifs --opt device=//<smb_server>/<smb_path> --opt o=username=<smb_username>,password=<smb_password>,uid=1000,gid=1000,file_mode=0777,dir_mode=0777 <volume_name>
 ```
 # mac
 ```bash
