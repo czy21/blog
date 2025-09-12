@@ -11,7 +11,10 @@ categories:
 tags: 
   - win11
 ---
-## Intel驱动安装 
+## Download
+  - https://www.microsoft.com/zh-cn/software-download/windows11
+  - https://www.microsoft.com/zh-cn/evalcenter/download-windows-11-enterprise
+## Intel驱动安装
 - https://www.intel.cn/content/www/cn/zh/support/intel-driver-support-assistant.html
 
 ## KMS激活
