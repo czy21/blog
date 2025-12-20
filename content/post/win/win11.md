@@ -36,6 +36,14 @@ tags:
   cscript ospp.vbs /act
   slmgr /ato SKUID
   ```
+## 去处右键更多选项
+```powershell
+reg.exe add “HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32” /f
+# 杀掉文件资源管理器
+taskkill /IM explorer.exe /F
+# 启动windows资源管理器
+explorer
+```
 ## VLAN
 - 启用Windows功能
 ![](vlan-feature.png)
