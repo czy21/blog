@@ -85,5 +85,10 @@ Kernel modules > USB Support:
 ```text
 docker run --detach -it --name openwrt-ib-x86-64-<tag>-dev -v openwrt-ib-x86-64-<tag>-dev:/builder openwrt/imagebuilder:x86-64-<tag>
 ```
+## Overlay 扩容
+```shell
+mnt <device> <dir>
+tar -C /overlay -cvf - . | tar -C <dir> -xf -
+```
 ## 常见问题
  * cron.err xxxxxx 意为cron执行过任务,不是任务内部出错
