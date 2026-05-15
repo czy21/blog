@@ -58,7 +58,7 @@ find . -type f -name 'init_config.sh' -exec sh -c 'f={};mv $f $(dirname $f)/init
 find . -name "[file]" -exec grep -l '[hello]' {} \; | xargs rm -rf                      # 过滤文件+过滤内容+删除
 find . -name "-*" -exec sh -c 'f={}; mv $f $(echo $f | sed 's/-//g')' \;                # 正则修改文件名称
 find . -type f -name values.yaml -size 0c -exec rm -rf {} \;                            # 批量删除空文件
-find . -type f -exec sh -c 'f={};if echo $f | grep -q src ; then sed -i "s|com.learning|com.czy.learning|g" $f; fi;' \; # 修改匹配路径下的文件内容
+find . -type f -exec sh -c 'f={};sed -i "s|com.learning|com.czy.learning|g" $f;' \;     # 修改匹配路径下的文件内容
 find . -maxdepth 1 -type f -exec md5sum {} \; | sort | uniq -D -w 33   # md5 文件查重
 find -name '*.gradle' -exec sed -i -e 's|compile|implementation|g' -e 's|testCompile|testImplementation|g' -e 's|runtime|implementation|g' {} \;
 sed -i '1,nd' [file] # 删除前n行

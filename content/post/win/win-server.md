@@ -50,38 +50,6 @@ Start-Service sshd
 
 Set-Service -Name sshd -StartupType 'Automatic'
 ```
-## WSL安装
-```powershell
-# 以管理员身份运行PowerShell
-dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
-reboot
-
-wsl --set-default-version 2
-
-wsl --update
-
-wsl --install Ubuntu-24.04
-```
-
-## WSL 服务对外开放
-  - 网络模式仅支持NAT,通过portproxy将wsl的服务端口映射到windows的远程端口,即可实现访问
-```powershell
-$wsl_ip = wsl hostname -I | ForEach-Object {
-    $_.Trim().Split()[0]
-}
-
-Write-Host "WSL IP: $wsl_ip"
-
-netsh interface portproxy reset
-
-netsh interface portproxy add v4tov4 listenaddress=0.0.0.0 listenport=12222 connectaddress=$wsl_ip connectport=2222
-
-netsh interface portproxy add v4tov4 listenaddress=0.0.0.0 listenport=16008 connectaddress=$wsl_ip connectport=6008
-
-netsh interface portproxy show all
-```
-
 ## Windows Terminal
 ```powershell
 # https://github.com/microsoft/microsoft-ui-xaml/releases/tag/v2.8.6
