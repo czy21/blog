@@ -42,3 +42,15 @@ git add .
 git commit -m "<message>"
 git push origin --all --force
 ```
+## 清空历史,保留最新代码
+```bash
+for branch in main <branch...>; do
+    git checkout $branch
+    git pull --rebase
+    git checkout --orphan temp-clean
+    git add -A
+    git commit -m "init"
+    git branch -M temp-clean $branch
+    git push origin $branch --force
+done
+```
