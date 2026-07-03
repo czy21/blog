@@ -1,6 +1,5 @@
 ---
 title: "Linux 命令大全"
-description: command
 keywords: "linux"
 
 date: 2023-10-17T10:20:58+08:00
