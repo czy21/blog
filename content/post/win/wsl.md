@@ -77,15 +77,28 @@ wsl --install Ubuntu-24.04
     [automount]
     options = "metadata"
     ```
-4. vim /usr/lib/systemd/network/99-wsl.network
-    ```ini
-    [Match]
-    Name=eth0
-    [Network]
-    Description=bridge
-    DHCP=false
-    Address=192.168.1.17/24
-    Gateway=192.168.1.1
-    DNS=192.168.1.1
-    ```
-5. 重启wsl;wsl --shutdown
+- Ubuntu
+    - vim /usr/lib/systemd/network/99-wsl.network
+        ```ini
+        [Match]
+        Name=eth0
+        [Network]
+        Description=bridge
+        DHCP=false
+        Address=192.168.1.17/24
+        Gateway=192.168.1.1
+        DNS=192.168.1.1
+        ```
+    - sudo systemctl enable systemd-networkd
+- Kali
+    - vim /etc/network/interfaces.d/wsl
+        ```text
+        auto eth0
+        iface eth0 inet static
+            address 192.168.1.17
+            netmask 255.255.255.0
+            gateway 192.168.1.1
+        ```
+    - echo 'nameserver 192.168.1.1' > /etc/resolv.conf
+
+- 重启wsl;wsl --shutdown
