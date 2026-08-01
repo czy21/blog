@@ -1,5 +1,5 @@
 ---
-title: "OpenWRT 官方系统构建"
+title: "OpenWRT"
 description: "build"
 keywords: "build"
 
@@ -12,79 +12,6 @@ tags:
   - build
   -
 ---
-## 基于ubuntu 22.04
-## 注意
-- 使用非root用户进行编译
-- 默认登录192.168.1.1 无密码
-- esxi中安装,非正常关闭系统(断电)可能会导致openwrt无法启动
-- Base system -> dnsmasq和dnsmasq-full只能二选一
-## 安装依赖
-```shell
-sudo apt update -y
-sudo apt install -y build-essential clang flex g++ gawk gcc-multilib gettext git libncurses5-dev libssl-dev python3-distutils rsync unzip zlib1g-dev file wget qemu-utils libelf-dev vim git make gcc
-```
-## 首次构建
-```shell
-git clone https://git.openwrt.org/openwrt/openwrt.git
-cd openwrt
-git checkout v22.03.5
-sed -i -e 's|\^.*|;openwrt-22.03|' feeds.conf.default
-echo "
-src-git helloworld https://github.com/fw876/helloworld
-src-git plugin https://github.com/czy21/openwrt-plugin.git
-" >> feeds.conf.default
-./scripts/feeds update -a && ./scripts/feeds install
-make menuconfig
-nohup make -j1 V=s & # 首次构建推荐使用单线程
-tail -f nohup.out
-```
-## 二次构建
-```shell
-git pull
-./scripts/feeds update -a && ./scripts/feeds install
-make menuconfig
-nohup make -j$(nproc) V=s &
-tail -f nohup.out
-```
-## 重新构建
-```shell
-rm -rf tmp .config
-make menuconfig
-nohup make -j$(nproc) V=s &
-tail -f nohup.out
-```
-----
-## 其他
-```shell
-# 更新并安装feeds.conf.default中指定依赖
-pkg=plugin && ./scripts/feeds update ${pkg} && ./scripts/feeds install -a -p ${pkg}
-# Raspberry pi zero w
-Target System: Broadcom BCM27xx
-Target Images 
-  Root filesystem partition size
-Kernel modules > USB Support:
-  kmod-usb-dwc2
-  kmod-usb-net-cdc-ether
-```
-## 应用描述
-  * luci-app-dawn           # 分布式AP管理程序
-  * luci-app-diag-core      # core诊断工具
-  * luci-app-minidlna       # 多媒体共享
-  * luci-app-mjpg-streamer  # 摄像头采集
-  * luci-app-mosquitto      # MQTT 消息队列
-  * luci-app-mwan3          # 多播负载均衡
-  * luci-app-nlbwmon        # 网络带宽监视器
-  * luci-app-nut            # ups 管理
-  * luci-app-ocserv         # OpenConnect VPN服务
-  * luci-app-openwisp       # AP管理
-  * luci-app-opkg           # openwrt 包管理
-  * luci-app-radicale2      # 日历 联系人同步
-  * luci-app-ksmbd          # smb server
-  * luci-app-nfs            # nfs server
-## Image Builder
-```text
-docker run --detach -it --name openwrt-ib-x86-64-<tag>-dev -v openwrt-ib-x86-64-<tag>-dev:/builder openwrt/imagebuilder:x86-64-<tag>
-```
 ## Overlay 扩容
 ```shell
 mnt <device> <dir>
@@ -92,3 +19,109 @@ tar -C /overlay -cvf - . | tar -C <dir> -xf -
 ```
 ## 常见问题
  * cron.err xxxxxx 意为cron执行过任务,不是任务内部出错
+
+## 内核启动;串口进入U-Boot
+```shell
+setenv ipaddr 192.168.1.1
+setenv serverip 192.168.1.2
+ping 192.168.1.2
+
+tftpboot 0x46000000 kernel.bin
+bootm 0x46000000
+```
+
+## 其他
+```shell
+# 计算内存地址
+printf "0x%x\n" $((0x580000+0x6c00000))
+# 查看wifi驱动日志
+dmesg | grep -i mt79
+```
+
+## 刷bl2+uboot, TTL ESC进入 MT7981 >;tftpboot 0x46000000 <filename> 从tftp服务端下载文件到0x46000000内存地址
+- 备份原厂分区
+```shell
+setenv serverip 192.168.1.254
+tftpboot 0x46000000 openwrt-25.12.5-mediatek-filogic-ikuai_q3000-initramfs-kernel.bin
+bootm 0x46000000
+
+# scp备份mtd分区
+ssh root@192.168.1.1
+# root@OpenWrt:~# 
+mkdir -p /tmp/mtd;cat /proc/mtd > /tmp/mtd/.mtd;for m in $(awk -F'[: "]+' '/mtd[0-9]+/{print $1}' /proc/mtd); do n=$(cat /sys/class/mtd/$m/name); dd if=/dev/$m of=/tmp/mtd/${n}.bin bs=1M; done
+scp -O -r root@192.168.1.1:/tmp/mtd/ .
+```
+## mtd layout
+  ```shell
+  mtd erase bl2
+  tftpboot 0x46000000 openwrt-mediatek-filogic-ikuai_q3000-ubootmod-preloader.bin
+  mtd write bl2 0x46000000
+
+  mtd erase fip
+  tftpboot 0x46000000 openwrt-mediatek-filogic-ikuai_q3000-ubootmod-bl31-uboot.fip
+  mtd write fip 0x46000000
+
+  run ubi_format
+  run boot_tftp_production
+  reset
+  ```
+## ubi layout
+- 拔电执行mtk_uartboot(可救砖)
+  ```powershell
+  # https://github.com/981213/mtk_uartboot
+  # https://downloads.openwrt.org/releases/25.12.5/targets/mediatek/filogic/mt7981-ram-ddr3-bl2.bin
+  # 执行该命令 不能有其他串口访问115200
+  ./mtk_uartboot.exe --payload ./mt7981-ram-ddr3-bl2.bin --aarch64 --fip ./openwrt-mediatek-filogic-ikuai_q3000-ubi-bl31-uboot.fip
+  # mtk_uartboot - 0.1.1
+  # Using serial port: COM3
+  # Handshake...
+  # hw code: 0x7981
+  # hw sub code: 0x8a00
+  # hw ver: 0xca00
+  # sw ver: 0x1
+  # Baud rate set to 460800
+  # sending payload to 0x201000...
+  # Checksum: 0xf854
+  # Setting baudrate back to 115200
+  # Jumping to 0x201000 in aarch64...
+  # Waiting for BL2. Message below:
+  # ==================================
+  # NOTICE:  BL2: v2.13.0(release):OpenWrt v2025.07.11~78a0dfd9-1 (mt7981-ram-ddr3)
+  # NOTICE:  BL2: Built : 12:59:20, Jun 29 2026
+  # NOTICE:  WDT: Cold boot
+  # NOTICE:  WDT: disabled
+  # NOTICE:  EMI: Using DDR3 settings
+  # NOTICE:  EMI: Detected DRAM size: 512MB
+  # NOTICE:  EMI: complex R/W mem test passed
+  # NOTICE:  CPU: MT7981 (1300MHz)
+  # NOTICE:  Starting UART download handshake ...
+  # ==================================
+  # BL2 UART DL version: 0x10
+  # Baudrate set to: 921600
+  # FIP sent.
+  # ==================================
+  # NOTICE:  Received FIP 0xc583c @ 0x40400000 ...
+  # ==================================
+  ```
+- TTL COMx 115200; ESC进入MT7981>
+  ```shell
+  mtd list
+  setenv serverip 192.168.1.254
+  run boot_tftp_write_bl2
+  
+  # 重建ubi分区
+  ubi list
+  ubi remove <volume_name>
+  nand erase.part ubi
+  ubi create factory 0x200000
+
+  # 刷入原厂factory
+  tftpboot 0x46000000 factory.bin
+  ubi write 0x46000000 factory ${filesize}
+
+  # 刷入UBoot
+  run boot_tftp_write_fip
+  # 刷入OpenWrt
+  run boot_tftp_production
+  reset
+  ```
