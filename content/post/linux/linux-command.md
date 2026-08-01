@@ -145,9 +145,27 @@ docker ps -a --filter volume=                                        # 根据vol
 docker inspect <container_name> -f '{{ .LogPath }}' | xargs sudo cat # 查看容器日志文件
 docker inspect <container_name> -f '{{ .LogPath }}' | xargs sudo tee # 清空容器日志文件
 # 创建nfs volume;容器挂载时生效
-docker volume create --driver local --opt type=nfs --opt device=:<export_path> --opt o=addr=<nfs_server>,rw <volume_name> 
+docker volume create --driver local --opt type=nfs --opt device=:<export_path> --opt o=addr=<nfs_server>,rw <volume_name>
+# 创建nfs volume;容器挂载时生效(wsl mirrored)
+docker volume create --driver local --opt type=nfs --opt device=:<export_path> --opt o=addr=<nfs_server>,rw,noresvport <volume_name>
 # 创建smb volume;容器挂载时生效
 docker volume create --driver local --opt type=cifs --opt device=//<smb_server>/<smb_path> --opt o=username=<smb_username>,password=<smb_password>,uid=1000,gid=1000,file_mode=0777,dir_mode=0777 <volume_name>
+```
+## docker macvlan
+```shell
+# ubuntu 22.04 设置网卡混杂模式
+sudo ifconfig ens160 promisc
+# create macvlan same net
+docker network create -d macvlan --subnet=192.168.2.0/24 --gateway=192.168.2.2 --ip-range=192.168.2.10/20 -o parent=ens160 vlan20
+docker run --rm -dit --network vlan20 --ip 192.168.2.17 --name macvlan-alpine1 alpine:latest ash
+
+# 解决macvlan容器不能访问宿主机
+ip link add macvlan2 link <parent interface> type macvlan mode bridge
+ip addr add <macvlan interface ip> dev macvlan2
+ip link set macvlan2 up
+ip route add <target container ip> dev macvlan2
+# 删除macvlan接口
+ip link delete macvlan2
 ```
 # mac
 ```bash

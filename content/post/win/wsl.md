@@ -4,7 +4,7 @@ description: wsl
 keywords: "wsl"
 
 date: 2026-05-15T13:50:38+08:00
-lastmod: 2026-05-15T13:50:38+08:00
+lastmod: 2026-10-23T10:36:24+08:00
 
 categories:
   - wsl
@@ -23,6 +23,7 @@ wsl --set-default-version 2
 wsl --update
 
 wsl --install Ubuntu-24.04
+wsl --install Ubuntu-24.04 --location D:\wsl\ubuntu
 ```
 
 ## Mirrored Network
@@ -31,8 +32,11 @@ wsl --install Ubuntu-24.04
     ```ini
     [wsl2]
     networkingMode=Mirrored
-    dnsTunneling=false
     firewall=false
+    [experimental]
+    hostAddressLoopback=true
+    [general]
+    instanceIdleTimeout=-1
     ```
 3. vim /etc/wsl.conf
     ```ini
